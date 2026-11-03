@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shakil Ahmmad | Digital Marketer & Web Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0e1a2b; --purple: #e2136e; --orange: #f5a524;
+  --text: #1f2937; --muted: #5b6676; --bg-light: #f4f6fa; --bg-mint: #0e1a2b;
+  --border: #e3e7ee; --sidebar: 0px; --head: 72px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--head); }
+body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: #fff; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+.accent { color: var(--purple); }
+.muted { color: var(--muted); }
+.center { text-align: center; }
+.hp { position: absolute; left: -9999px; }
+[hidden] { display: none !important; }
+
+/* HEADER */
+.sidebar { position: fixed; top: 0; left: 0; right: 0; height: var(--head); background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 max(24px, 5vw); z-index: 10; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: #e5e7eb; }
+.sidebar-name { font: 700 17px 'Bricolage Grotesque', 'Inter', sans-serif; color: var(--navy); margin: 0; }
+.sidebar nav { display: flex; gap: 6px; }
+.sidebar nav a { color: var(--muted); font-size: 14.5px; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: color .2s, background .2s; }
+.sidebar nav a:hover { color: var(--navy); background: var(--bg-light); }
+.sidebar nav a.active { color: var(--purple); background: #fde8f1; }
+.socials { display: flex; gap: 8px; }
+.socials a { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border); color: var(--navy); display: grid; place-items: center; font-size: 13px; font-weight: 600; transition: background .2s, color .2s; }
+.socials a:hover { background: var(--navy); color: #fff; }
+
+/* MAIN */
+.content { margin-left: 0; padding-top: var(--head); }
+section { padding: 104px max(24px, 7vw); }
+h1 { font: 800 clamp(40px, 5.2vw, 68px)/1.06 'Bricolage Grotesque', 'Inter', sans-serif; color: #fff; letter-spacing: -.02em; }
+h2 { font: 800 clamp(30px, 3.6vw, 44px)/1.15 'Bricolage Grotesque', 'Inter', sans-serif; color: var(--navy); margin-bottom: 18px; letter-spacing: -.015em; }
+h3 { font: 700 22px/1.3 'Bricolage Grotesque', 'Inter', sans-serif; color: var(--navy); margin-bottom: 12px; }
+h4 { font: 700 20px/1.3 'Bricolage Grotesque', 'Inter', sans-serif; color: var(--navy); margin-bottom: 10px; }
+.eyebrow { display: block; font-size: 14px; font-weight: 600; color: var(--purple); margin-bottom: 10px; }
+.sub-eyebrow { display: none; }
+.loading { padding: 120px 80px; color: var(--muted); }
+
+.btn { display: inline-block; padding: 14px 28px; border-radius: 10px; font-weight: 600; font-size: 15px; cursor: pointer; border: 1.5px solid transparent; transition: background .2s, border-color .2s, transform .15s; font-family: inherit; }
+.btn:active { transform: scale(.98); }
+.btn-primary { background: var(--purple); color: #fff; }
+.btn-primary:hover { background: #be0f5c; }
+.btn-outline { border-color: rgba(255,255,255,.35); color: #fff; background: transparent; }
+.btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+.modal .btn-outline { border-color: #d1d5db; color: var(--navy); }
+
+/* HERO */
+.hero { background: var(--navy); display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; min-height: calc(100vh - var(--head)); gap: 56px; position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 640px; height: 640px; right: -180px; top: -200px; border-radius: 50%; background: radial-gradient(circle, rgba(226,19,110,.30), transparent 65%); pointer-events: none; }
+.hero > * { position: relative; }
+.tagline { color: #b4bfd0; margin: 22px 0 32px; font-size: 18px; max-width: 520px; }
+.tagline .accent { color: var(--orange); font-weight: 600; }
+.hero h1 .accent { color: #ff7fb6; }
+.hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+.contact-box { border-top: 1px solid rgba(255,255,255,.15); padding-top: 22px; font-size: 14.5px; line-height: 1.9; color: #cbd5e3; max-width: 420px; }
+.hero-image { display: grid; place-items: center; }
+.hero-image img { width: 100%; max-width: 400px; aspect-ratio: 4/5; object-fit: cover; border-radius: 24px; background: #1b2a42; box-shadow: 0 30px 60px rgba(0,0,0,.35); }
+.blob { position: absolute; width: 100%; max-width: 400px; aspect-ratio: 4/5; border-radius: 24px; border: 2px solid var(--purple); transform: translate(18px, 18px); }
+.typing { color: var(--orange); border-right: 3px solid var(--orange); padding-right: 4px; animation: blink .8s step-end infinite; }
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* ABOUT */
+.about { background: var(--bg-light); }
+.about-text { max-width: 760px; color: var(--muted); font-size: 17px; margin-bottom: 36px; }
+.skill-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 44px; }
+.skill-chip { background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 9px 18px; font-size: 14px; font-weight: 500; color: var(--navy); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); background: #fff; border: 1px solid var(--border); border-radius: 16px; }
+.stat { padding: 26px 20px; text-align: center; border-right: 1px solid var(--border); }
+.stat:last-child { border-right: 0; }
+.stat strong { display: block; font: 800 34px 'Bricolage Grotesque', 'Inter', sans-serif; color: var(--purple); line-height: 1.2; }
+.stat span { font-size: 13.5px; color: var(--muted); }
+
+/* SERVICES */
+.section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 44px; gap: 20px; }
+.head-email { color: var(--purple); font-weight: 600; }
+.service-grid, .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color .2s, box-shadow .2s; }
+.card:hover { border-color: #f5b3d1; box-shadow: 0 14px 36px rgba(14,26,43,.07); }
+.card-no { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: #fde8f1; color: var(--purple); font-weight: 700; font-size: 14px; margin-bottom: 18px; }
+.card p { color: var(--muted); font-size: 15px; margin-bottom: 20px; }
+.link-arrow { color: var(--purple); font-weight: 600; font-size: 14.5px; }
+.link-arrow:hover { text-decoration: underline; }
+
+/* PORTFOLIO */
+.project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 24px; margin-top: 36px; }
+.project { cursor: zoom-in; }
+.project img, .project .ph { border-radius: 14px; border: 1px solid var(--border); aspect-ratio: 4/3; object-fit: cover; width: 100%; background: #eef1f6; transition: box-shadow .25s; }
+.project:hover img { box-shadow: 0 18px 36px rgba(14,26,43,.16); }
+.project figcaption { margin-top: 12px; font-weight: 600; color: var(--navy); font-size: 15.5px; }
+
+/* CLIENTS */
+.clients { background: var(--bg-light); }
+.client-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+.client { height: 96px; display: grid; place-items: center; font: 700 18px 'Bricolage Grotesque', 'Inter', sans-serif; color: #7b8798; background: #fff; border: 1px solid var(--border); border-radius: 12px; text-align: center; padding: 0 12px; }
+
+/* TESTIMONIALS */
+.testimonials { background: #fff; }
+.testi-grid { margin-top: 44px; }
+.testi-card { background: var(--bg-light); border-color: transparent; }
+.stars { color: var(--orange); margin-bottom: 14px; letter-spacing: 2px; }
+.testi-author { display: flex; align-items: center; gap: 12px; margin-top: 22px; }
+.testi-author small { display: block; color: var(--muted); }
+.avatar-initial { width: 42px; height: 42px; border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; font-weight: 700; flex-shrink: 0; }
+
+/* CONTACT */
+.contact { background: var(--navy); display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+.contact h2 { color: #fff; }
+.contact-info p { color: #b4bfd0; margin-bottom: 24px; max-width: 460px; }
+.contact-info a, .contact-info span:not(.eyebrow) { display: block; color: #fff; font-weight: 600; margin-bottom: 8px; }
+.contact-info a:hover { color: var(--orange); }
+.contact-form { display: flex; flex-direction: column; gap: 14px; background: #fff; padding: 32px; border-radius: 18px; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 15px 16px; border: 1px solid #d5dbe5; border-radius: 10px; font: inherit; background: #fff; }
+.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 3px #fbd0e2; }
+.contact-form .btn { align-self: flex-start; }
+.alert-success { background: #dcfce7; color: #166534; padding: 14px; border-radius: 8px; display: none; }
+
+/* SCROLL / CHROME */
+.reveal { opacity: 0; translate: 0 16px; transition: opacity .5s ease, translate .5s ease; }
+.reveal.show { opacity: 1; translate: 0 0; }
+.progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--purple); z-index: 20; }
+.to-top { position: fixed; right: 24px; bottom: 24px; width: 44px; height: 44px; border-radius: 12px; background: var(--navy); color: #fff; border: none; font-size: 20px; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 15; }
+.to-top.show { opacity: 1; pointer-events: auto; }
+.lightbox { position: fixed; inset: 0; background: rgba(10,10,30,.85); display: grid; place-items: center; z-index: 50; opacity: 0; pointer-events: none; transition: opacity .25s; padding: 20px; }
+.lightbox.open { opacity: 1; pointer-events: auto; }
+.lightbox img { max-width: 92vw; max-height: 86vh; border-radius: 8px; }
+.lightbox-close { position: absolute; top: 16px; right: 24px; color: #fff; font-size: 36px; background: none; border: none; cursor: pointer; }
+
+/* ADMIN */
+.admin-btn { position: fixed; right: 84px; bottom: 24px; padding: 10px 16px; border: none; border-radius: 999px; background: var(--purple); color: #fff; font-weight: 600; font-size: 14px; cursor: pointer; z-index: 15; }
+.modal { position: fixed; inset: 0; background: rgba(10,10,30,.5); display: grid; place-items: center; z-index: 60; padding: 16px; }
+.modal-box { background: #fff; width: min(720px, 100%); max-height: 90vh; display: flex; flex-direction: column; border-radius: 12px; }
+.modal-head { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.modal-head button { background: none; border: none; font-size: 26px; cursor: pointer; }
+#adminBody { overflow-y: auto; padding: 16px 20px; flex: 1; }
+#adminBody h4 { margin: 18px 0 8px; color: var(--navy); }
+#adminBody label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+#adminBody input, #adminBody textarea { display: block; width: 100%; margin-top: 4px; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font: inherit; color: var(--text); }
+.group { border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
+.group summary { font-weight: 700; cursor: pointer; color: var(--navy); }
+.item { border-top: 1px dashed var(--border); padding: 10px 0; margin-top: 10px; }
+.item-actions { display: flex; gap: 6px; }
+.item-actions button, .add { padding: 6px 12px; border: 1px solid #d1d5db; border-radius: 6px; background: #fff; cursor: pointer; font: inherit; font-size: 13px; }
+.item-actions button:disabled { opacity: .4; cursor: default; }
+.item-actions .danger { color: #dc2626; border-color: #fecaca; }
+.add { margin-top: 10px; background: var(--bg-light); color: var(--navy); font-weight: 600; }
+.modal-foot { display: flex; justify-content: flex-end; align-items: center; gap: 12px; padding: 14px 20px; border-top: 1px solid var(--border); }
+#adminStatus { font-size: 13px; color: var(--muted); }
+
+.state { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; }
+.state h2 { margin-bottom: 8px; }
+
+/* TOAST */
+.toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%) translateY(20px); background: var(--navy); color: #fff; padding: 12px 22px; border-radius: 8px; font-size: 14px; z-index: 70; box-shadow: 0 10px 30px rgba(0,0,0,.2); opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  section { padding: 80px 32px; }
+  .service-grid, .testi-grid, .project-grid { grid-template-columns: 1fr 1fr; }
+  .client-grid { grid-template-columns: repeat(2, 1fr); }
+  .sidebar .socials { display: none; }
+}
+@media (max-width: 768px) {
+  :root { --head: 64px; }
+  .sidebar nav a { padding: 8px 9px; font-size: 13px; }
+  .sidebar-name { display: none; }
+  .hero, .contact { grid-template-columns: 1fr; gap: 40px; }
+  .hero { min-height: 0; }
+  .hero-image img, .blob { max-width: 300px; }
+  section { padding: 56px 20px; }
+  .service-grid, .testi-grid, .project-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat:nth-child(2) { border-right: 0; }
+  .section-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .admin-btn { right: 84px; }
+  .contact-form { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { transition: none; } .typing { animation: none; } }
+
+.hero::before, .hero::after { content: ""; position: absolute; pointer-events: none; z-index: 0; }
+.hero::after { inset: 0; width: auto; height: auto; right: 0; top: 0; border-radius: 0; background: radial-gradient(520px circle at var(--mx, 72%) var(--my, 30%), rgba(226,19,110,.20), transparent 60%); }
+.hero > * { z-index: 1; }
+.hero-image { position: relative; }
+.hero-chip { position: absolute; z-index: 2; background: #fff; color: var(--navy); border-radius: 14px; padding: 12px 18px; box-shadow: 0 18px 40px rgba(0,0,0,.3); animation: chip 6s ease-in-out infinite; }
+.hero-chip strong { display: block; font: 800 24px 'Bricolage Grotesque', 'Inter', sans-serif; color: var(--purple); line-height: 1.1; }
+.hero-chip span { font-size: 12.5px; color: var(--muted); }
+.chip1 { left: -6%; bottom: 14%; } .chip2 { right: -4%; top: 10%; animation-delay: -3s; }
+@keyframes chip { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.marquee { background: #fff; border-bottom: 1px solid var(--border); overflow: hidden; padding: 20px 0; }
+.marquee-track { display: flex; width: max-content; animation: scrollx 32s linear infinite; }
+.marquee span { padding-right: 56px; font: 700 20px 'Bricolage Grotesque', 'Inter', sans-serif; color: #9aa5b5; white-space: nowrap; }
+.marquee span::after { content: "✦"; color: var(--purple); margin-left: 56px; font-size: 14px; }
+@keyframes scrollx { to { transform: translateX(-50%); } }
+.card { position: relative; overflow: hidden; }
+.card::before { content: ""; position: absolute; left: 0; top: 0; height: 3px; width: 0; background: var(--purple); transition: width .35s; }
+.card:hover::before { width: 100%; }
+.project figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+.project figcaption small { flex-basis: 100%; font-weight: 600; font-size: 12.5px; color: var(--purple); }
+.project figcaption em { font-style: normal; font-size: 13px; font-weight: 700; background: #fde8f1; color: #be0f5c; padding: 3px 10px; border-radius: 999px; }
+.project:hover { transform: translateY(-4px); transition: transform .25s; }
+@media (max-width: 768px) { .chip1 { left: 0; } .chip2 { right: 0; } .marquee span { font-size: 17px; } }
+@media (prefers-reduced-motion: reduce) { .marquee-track, .hero-chip { animation: none; } }
+</style>
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar"></aside>
+<main class="content" id="app"><p class="loading">Loading...</p></main>
+
+<div class="progress" id="progress"></div>
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+<div class="lightbox" id="lightbox"><button class="lightbox-close" id="lbClose" aria-label="Close">×</button><img id="lbImg" alt=""></div>
+
+<button class="admin-btn" id="adminBtn" hidden>⚙ Admin</button>
+<div class="modal" id="adminModal" hidden>
+  <div class="modal-box">
+    <div class="modal-head"><h3>Admin panel</h3><button id="adminClose" aria-label="Close">×</button></div>
+    <div id="adminBody"></div>
+    <div class="modal-foot"><span id="adminStatus"></span><button class="btn btn-outline" id="cancelBtn">Cancel</button><button class="btn btn-primary" id="saveBtn">Save changes</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+
+let db = null, user = null, docRef = null, content = null, draft = null, typeTimer = null, observers = [];
+
+// Admin editor field definitions for list sections
+const LISTS = {
+  stats:        { title: 'Stats',        fields: [['value', 'Value (e.g. 400+)'], ['label', 'Label']], },
+  skills:       { title: 'Skills',       fields: [['name', 'Skill']] },
+  services:     { title: 'Services',     fields: [['no', 'Number (01)'], ['title', 'Title'], ['desc', 'Description', 'textarea']] },
+  projects:     { title: 'Projects',     fields: [['title', 'Title'], ['tag', 'Category (e.g. Facebook Ads)'], ['result', 'Result (e.g. 3.2x ROAS)'], ['image', 'Image URL']] },
+  clients:      { title: 'Clients',      fields: [['name', 'Client name']] },
+  testimonials: { title: 'Testimonials', fields: [['name', 'Name'], ['role', 'Role'], ['text', 'Review', 'textarea']] },
+};
+const PROFILE_FIELDS = [
+  ['name', 'Full name'], ['shortName', 'Short name (hero)'], ['headline', 'Headline start (e.g. Hi I\'m)'],
+  ['tagline', 'Tagline'], ['experience', 'Experience (e.g. 6+ years)'], ['phone', 'Phone'],
+  ['email', 'Email'], ['address', 'Address'], ['photo', 'Photo URL'], ['about', 'About text', 'textarea'],
+];
+
+(async () => {
+  initChrome();
+  try { db = await claude.use('db'); user = await claude.use('user'); } catch (e) {}
+  if (!db) return showMsg('Database ekhon available nei.');
+  if (user && user.canEdit()) $('#adminBtn').hidden = false;
+
+  docRef = db.doc('site/content');
+  let got = false;
+  const timer = setTimeout(() => { if (!got) showMsg('Data ekhono pawa jachhe na. Ektu pore abar try koro.'); }, 10000);
+  docRef.onSnapshot(snap => {
+    got = true; clearTimeout(timer);
+    if (!snap.exists) return showMsg('Content ekhono set kora hoy nai.');
+    content = snap.data();
+    try { renderAll(); } catch (e) { showMsg('Page render hoyni: ' + e.message); }
+  }, err => showMsg('Error: ' + (err.message || err.code || 'unknown')));
+})();
+
+function showMsg(msg) { $('#app').innerHTML = `<section class="state"><h2>Page ekhono ready noy</h2><p class="muted">${esc(msg)}</p></section>`; }
+
+function renderAll() {
+  const p = content.profile || {};
+  document.title = `${p.name || 'Portfolio'} | ${p.tagline || ''}`;
+  $('#sidebar').innerHTML = sidebarHTML(p);
+  $('#app').innerHTML = mainHTML(p, content);
+  initEffects();
+}
+
+function sidebarHTML(p) {
+  const socials = Object.entries(p.socials || {}).filter(([, u]) => u)
+    .map(([n, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener" aria-label="${esc(n)}">${esc(n[0].toUpperCase())}</a>`).join('');
+  return `<div class="brand">
+    ${p.photo ? `<img src="${esc(p.photo)}" alt="${esc(p.name)}" class="avatar">` : ''}
+    <h3 class="sidebar-name">${esc(p.name)}</h3>
+  </div>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="socials">${socials}</div>`;
+}
+
+function mainHTML(p, c) {
+  const stats = (c.stats || []).map(s => {
+    const m = String(s.value).match(/^(\d+)(.*)$/);
+    const val = m ? `<strong class="count" data-target="${m[1]}" data-suffix="${esc(m[2])}">0</strong>` : `<strong>${esc(s.value)}</strong>`;
+    return `<div class="stat">${val}<span>${esc(s.label)}</span></div>`;
+  }).join('');
+  const skills = (c.skills || []).map(s => `<div class="skill-chip">${esc(s.name)}</div>`).join('');
+  const services = (c.services || []).map(s => `
+    <div class="card"><span class="card-no">${esc(s.no)}</span><h4>${esc(s.title)}</h4><p>${esc(s.desc)}</p><a href="#contact" class="link-arrow">Contact now</a></div>`).join('');
+  const projects = (c.projects || []).map(pr => `
+    <figure class="project">${pr.image ? `<img src="${esc(pr.image)}" alt="${esc(pr.title)}" loading="lazy">` : '<div class="ph"></div>'}<figcaption>${pr.tag ? `<small>${esc(pr.tag)}</small>` : ''}${esc(pr.title)}${pr.result ? `<em>${esc(pr.result)}</em>` : ''}</figcaption></figure>`).join('');
+  const clients = (c.clients || []).map(cl => `<div class="client">${esc(cl.name)}</div>`).join('');
+  const testis = (c.testimonials || []).map(t => `
+    <div class="card testi-card"><div class="stars">★★★★★</div><p>"${esc(t.text)}"</p>
+      <div class="testi-author"><div class="avatar-initial">${esc((t.name || '?')[0])}</div><div><strong>${esc(t.name)}</strong><small>${esc(t.role)}</small></div></div></div>`).join('');
+
+  return `
+  <section id="home" class="hero">
+    <div>
+      <h1>${esc(p.headline)} <span class="accent">${esc(p.shortName)}</span><br>This is<br><span class="typing" id="typed"></span></h1>
+      <p class="tagline">${esc(p.tagline)}<br>With <span class="accent">${esc(p.experience)}</span> of experience</p>
+      <div class="hero-buttons"><a href="#portfolio" class="btn btn-primary">View my work</a><a href="#contact" class="btn btn-outline">Let's talk</a></div>
+      <div class="contact-box"><p>${esc(p.phone)}</p><p>${esc(p.email)}</p><p>${esc(p.address)}</p></div>
+    </div>
+    <div class="hero-image"><div class="blob"></div>${p.photo ? `<img src="${esc(p.photo)}" alt="${esc(p.name)}">` : ''}
+      ${c.stats?.[0] ? `<div class="hero-chip chip1"><strong>${esc(c.stats[0].value)}</strong><span>${esc(c.stats[0].label)}</span></div>` : ''}
+      ${c.stats?.[1] ? `<div class="hero-chip chip2"><strong>${esc(c.stats[1].value)}</strong><span>${esc(c.stats[1].label)}</span></div>` : ''}</div>
+  </section>
+
+  ${(c.skills || []).length ? `<div class="marquee" aria-hidden="true"><div class="marquee-track">${[...c.skills, ...c.skills, ...c.skills, ...c.skills].map(k => `<span>${esc(k.name)}</span>`).join('')}</div></div>` : ''}
+
+  <section id="about" class="about">
+    <span class="eyebrow">About</span>
+    <h2>About me</h2>
+    <h3>Who I am and what I do</h3>
+    <p class="about-text">${esc(p.about)}</p>
+    <div class="skill-grid">${skills}</div>
+    <div class="stats">${stats}</div>
+  </section>
+
+  <section id="services">
+    <div class="section-head">
+      <div><span class="eyebrow">Services</span><h2>My Services</h2></div>
+      <a href="mailto:${esc(p.email)}" class="head-email">${esc(p.email)}</a>
+    </div>
+    <div class="service-grid">${services}</div>
+  </section>
+
+  <section id="portfolio">
+    <span class="eyebrow">Projects</span>
+    <h2>Selected work</h2>
+    <div class="project-grid">${projects}</div>
+  </section>
+
+  <section class="clients">
+    <span class="eyebrow">Clients</span>
+    <h2>Clients I've worked with</h2>
+    <div class="client-grid">${clients}</div>
+  </section>
+
+  <section class="testimonials">
+    <div class="center"><span class="eyebrow">Testimonials</span><h2>What People Say</h2><p class="muted">Trusted by clients around the world</p></div>
+    <div class="testi-grid">${testis}</div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="contact-info">
+      <span class="eyebrow">Let's connect</span>
+      <h2>Get in touch</h2>
+      <p>I'm currently available to take on new projects, so feel free to send me a message about anything that you want to run past me.</p>
+      <a href="tel:${esc(p.phone)}">${esc(p.phone)}</a>
+      <a href="mailto:${esc(p.email)}">${esc(p.email)}</a>
+      <span>${esc(p.address)}</span>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off">
+      <input type="text" name="name" placeholder="Enter Your Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="text" name="phone" placeholder="Telephone">
+      <textarea name="message" rows="5" placeholder="Write Something..." required></textarea>
+      <button type="submit" class="btn btn-primary">Send message</button>
+      <div class="alert-success" id="successMsg">Apnar message pathano hoyeche. Shighroi reply debo!</div>
+    </form>
+  </section>`;
+}
+
+function initEffects() {
+  observers.forEach(o => o.disconnect()); observers = [];
+  clearTimeout(typeTimer);
+
+  // Typing effect
+  const words = (content.profile?.roles || []).filter(Boolean);
+  const typed = $('#typed');
+  if (typed && words.length) {
+    let wi = 0, ci = 0, del = false;
+    const step = () => {
+      const w = words[wi];
+      typed.textContent = w.slice(0, ci);
+      if (!del && ci < w.length) { ci++; typeTimer = setTimeout(step, 110); }
+      else if (del && ci > 0) { ci--; typeTimer = setTimeout(step, 55); }
+      else { del = !del; if (!del) wi = (wi + 1) % words.length; typeTimer = setTimeout(step, del ? 1600 : 400); }
+    };
+    step();
+  }
+
+  // Animated counters
+  const co = new IntersectionObserver(es => es.forEach(en => {
+    if (!en.isIntersecting) return;
+    const el = en.target, target = +el.dataset.target, suf = el.dataset.suffix || '';
+    let n = 0; const st = Math.max(1, Math.ceil(target / 60));
+    const t = setInterval(() => { n = Math.min(target, n + st); el.textContent = n + suf; if (n >= target) clearInterval(t); }, 25);
+    co.unobserve(el);
+  }), { threshold: .5 });
+  observers.push(co);
+  document.querySelectorAll('.count').forEach(el => co.observe(el));
+
+  // Scroll reveal
+  const ro = new IntersectionObserver(es => es.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('show'); ro.unobserve(en.target); }
+  }), { threshold: .12 });
+  observers.push(ro);
+  document.querySelectorAll('#app .card, #app .skill-chip, #app .stat, #app .project, #app .client, #app .about-text, #app .contact-info, #app .contact-form')
+    .forEach(el => { el.style.transitionDelay = (Array.prototype.indexOf.call(el.parentNode.children, el) % 3) * 90 + 'ms'; el.classList.add('reveal'); ro.observe(el); });
+  const hero = $('#home');
+  if (hero) hero.addEventListener('mousemove', e => { const r = hero.getBoundingClientRect(); hero.style.setProperty('--mx', (e.clientX - r.left) + 'px'); hero.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+
+  // Safety: content never stays hidden if scroll observer misses an element
+  setTimeout(() => document.querySelectorAll('.reveal:not(.show)').forEach(el => el.classList.add('show')), 1500);
+
+  // Contact form (mailto)
+  $('#contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target;
+    if (f.website.value) return;
+    const body = `Name: ${f.name.value}\nEmail: ${f.email.value}\nPhone: ${f.phone.value || '-'}\n\n${f.message.value}`;
+    location.href = `mailto:${content.profile.email}?subject=${encodeURIComponent('New contact from ' + f.name.value)}&body=${encodeURIComponent(body)}`;
+    $('#successMsg').style.display = 'block';
+    f.reset();
+  });
+}
+
+function initChrome() {
+  const bar = $('#progress'), top = $('#toTop');
+  addEventListener('scroll', () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.width = (max > 0 ? scrollY / max * 100 : 0) + '%';
+    top.classList.toggle('show', scrollY > 400);
+    let cur = '';
+    document.querySelectorAll('#app section[id]').forEach(s => { if (scrollY >= s.offsetTop - 200) cur = s.id; });
+    document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+  });
+  top.onclick = () => scrollTo({ top: 0, behavior: 'smooth' });
+
+  const lb = $('#lightbox'), lbImg = $('#lbImg');
+  const closeLb = () => lb.classList.remove('open');
+  $('#lbClose').onclick = closeLb;
+  lb.onclick = e => { if (e.target === lb) closeLb(); };
+  $('#app').addEventListener('click', e => {
+    const img = e.target.closest('.project img');
+    if (img) { lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('open'); }
+  });
+
+  $('#adminBtn').onclick = openAdmin;
+  $('#adminClose').onclick = closeAdmin;
+  $('#saveBtn').onclick = saveDraft;
+  $('#cancelBtn').onclick = () => { draft = null; closeAdmin(); };
+  $('#adminModal').addEventListener('click', e => { if (e.target.id === 'adminModal') closeAdmin(); });
+  $('#adminBody').addEventListener('input', onAdminInput);
+  $('#adminBody').addEventListener('click', onAdminClick);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLb(); closeAdmin(); } });
+}
+
+/* ---------- ADMIN PANEL ---------- */
+function setStatus(msg) { $('#adminStatus').textContent = msg; }
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2400);
+}
+function openAdmin() {
+  if (!draft) draft = structuredClone(content);
+  renderAdmin();
+  $('#adminStatus').textContent = '';
+  $('#adminModal').hidden = false;
+}
+function closeAdmin() { $('#adminModal').hidden = true; }
+
+function field(name, label, value, type) {
+  return type === 'textarea'
+    ? `<label>${label}<textarea data-name="${name}" rows="3">${esc(value)}</textarea></label>`
+    : `<label>${label}<input data-name="${name}" value="${esc(value)}"></label>`;
+}
+
+function renderAdmin() {
+  const p = draft.profile || (draft.profile = {});
+  p.socials = p.socials || {};
+  const profile = PROFILE_FIELDS.map(([k, label, type]) => field('profile.' + k, label, p[k], type)).join('');
+  const roles = field('roles', 'Typing roles (comma diye likho)', (p.roles || []).join(', '));
+  const social = ['facebook', 'twitter', 'youtube']
+    .map(n => field('social.' + n, n[0].toUpperCase() + n.slice(1) + ' link', p.socials[n])).join('');
+
+  const lists = Object.entries(LISTS).map(([key, def]) => {
+    const arr = draft[key] || [];
+    const items = arr.map((item, i) => `
+      <div class="item">
+        ${def.fields.map(([f, label, type]) => type === 'textarea'
+          ? `<label>${label}<textarea data-list="${key}" data-idx="${i}" data-field="${f}" rows="2">${esc(item[f])}</textarea></label>`
+          : `<label>${label}<input data-list="${key}" data-idx="${i}" data-field="${f}" value="${esc(item[f])}"></label>`).join('')}
+        <div class="item-actions">
+          <button data-act="up" data-list="${key}" data-idx="${i}" ${i === 0 ? 'disabled' : ''}>↑ Up</button>
+          <button data-act="down" data-list="${key}" data-idx="${i}" ${i === arr.length - 1 ? 'disabled' : ''}>↓ Down</button>
+          <button data-act="del" data-list="${key}" data-idx="${i}" class="danger">Delete</button>
+        </div>
+      </div>`).join('');
+    return `<details class="group" open><summary>${def.title} (${arr.length})</summary>
+      ${items}
+      <button class="add" data-act="add" data-list="${key}">+ Add ${def.title.slice(0, -1)}</button></details>`;
+  }).join('');
+
+  $('#adminBody').innerHTML = `<h4>Profile</h4>${profile}${roles}<h4>Social links</h4>${social}<h4>Sections</h4>${lists}`;
+}
+
+function onAdminInput(e) {
+  setStatus('Unsaved changes');
+  const t = e.target;
+  if (t.dataset.name) {
+    const n = t.dataset.name;
+    if (n === 'roles') draft.profile.roles = t.value.split(',').map(s => s.trim()).filter(Boolean);
+    else if (n.startsWith('social.')) draft.profile.socials[n.slice(7)] = t.value;
+    else draft.profile[n.slice(8)] = t.value;
+  } else if (t.dataset.list) {
+    draft[t.dataset.list][+t.dataset.idx][t.dataset.field] = t.value;
+  }
+}
+
+function onAdminClick(e) {
+  const b = e.target.closest('button[data-act]');
+  if (!b) return;
+  const { act, list } = b.dataset, i = +b.dataset.idx;
+  setStatus('Unsaved changes');
+  draft[list] ||= [];
+  const arr = draft[list];
+  if (act === 'add') arr.push(Object.fromEntries(LISTS[list].fields.map(([f]) => [f, ''])));
+  if (act === 'del') arr.splice(i, 1);
+  if (act === 'up' && i > 0) [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+  if (act === 'down' && i < arr.length - 1) [arr[i + 1], arr[i]] = [arr[i], arr[i + 1]];
+  renderAdmin();
+}
+
+async function saveDraft() {
+  const s = $('#adminStatus'), btn = $('#saveBtn');
+  btn.disabled = true; s.textContent = 'Saving...';
+  try {
+    await docRef.set(draft);
+    draft = null;
+    closeAdmin();
+    toast('Changes saved successfully');
+  } catch (err) {
+    s.textContent = 'Could not save: ' + (err.message || 'permission denied');
+  } finally {
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
